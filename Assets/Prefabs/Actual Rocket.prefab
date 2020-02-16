@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 6821746922576711708}
   - component: {fileID: 6821746922576711707}
   - component: {fileID: 6821746922576711706}
-  - component: {fileID: 6821746922576711709}
+  - component: {fileID: 6203203541813305236}
   m_Layer: 0
   m_Name: Fork
   m_TagString: Untagged
@@ -960,7 +960,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &6821746922576711709
+--- !u!135 &6203203541813305236
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -969,10 +969,10 @@ SphereCollider:
   m_GameObject: {fileID: 6821746922576711711}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.00000023841858, z: 0}
 --- !u!1 &6821746922611887115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 6821746923256041669}
   - component: {fileID: 6821746923256041664}
   - component: {fileID: 6821746923256041667}
-  - component: {fileID: 6821746923256041666}
+  - component: {fileID: 6008936161158954953}
   m_Layer: 0
   m_Name: Carrier
   m_TagString: Untagged
@@ -1516,7 +1516,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &6821746923256041666
+--- !u!135 &6008936161158954953
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1525,7 +1525,7 @@ SphereCollider:
   m_GameObject: {fileID: 6821746923256041668}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
