@@ -12,12 +12,18 @@ public class Rocket : MonoBehaviour
 
     [SerializeField]
     private float m_mainThrust =10000f;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         m_rigidBody = this.GetComponent<Rigidbody>();
         m_audioSource = GetComponent<AudioSource>();
         Application.targetFrameRate = 60;
+
+        m_rigidBody.freezeRotation =true;
+
     }
 
     // Update is called once per frame
@@ -36,13 +42,14 @@ public class Rocket : MonoBehaviour
         
         float rotationSpeed = m_rcsThrust*Time.deltaTime;
         float mainThrust = m_mainThrust*Time.deltaTime;
-        m_rigidBody.freezeRotation = true;  //Take manual control of the rotation
+        //m_rigidBody.freezeRotation = true;  //Take manual control of the rotation
 
         //Handle the movement
         if (Input.GetKey(KeyCode.Space))
         {
             //m_rigidBody.AddRelativeForce(Vector3.up * mainThrust);
             m_rigidBody.AddRelativeForce(Vector3.up * m_mainThrust);
+            
         }
         if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
@@ -55,7 +62,7 @@ public class Rocket : MonoBehaviour
             //m_rigidBody.freezeRotation = true;  //Take manual control of the rotation
         }
 
-        m_rigidBody.freezeRotation = false; //Let  physics control the rotation.
+        //m_rigidBody.freezeRotation = false; //Let  physics control the rotation.
     }
 
     void OnCollisionEnter(Collision collision)
