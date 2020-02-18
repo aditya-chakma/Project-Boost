@@ -6,6 +6,12 @@ public class Rocket : MonoBehaviour
 {
     private Rigidbody m_rigidBody;
     private AudioSource m_audioSource;
+
+    [SerializeField]
+    private float m_rcsThrust = 100f;
+
+    [SerializeField]
+    private float m_mainThrust =10000f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,27 +34,46 @@ public class Rocket : MonoBehaviour
     private void ProcessInput()
     {
         
+        float rotationSpeed = m_rcsThrust*Time.deltaTime;
+        float mainThrust = m_mainThrust*Time.deltaTime;
+        m_rigidBody.freezeRotation = true;  //Take manual control of the rotation
+
         //Handle the movement
         if (Input.GetKey(KeyCode.Space))
         {
-            //rigidBody.AddRelativeForce(Vector3.up*100000);
-            m_rigidBody.AddRelativeForce(Vector3.up);
+            //m_rigidBody.AddRelativeForce(Vector3.up * mainThrust);
+            m_rigidBody.AddRelativeForce(Vector3.up * m_mainThrust);
         }
         if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.forward);
-            m_rigidBody.freezeRotation = true;  //Take manual control of the rotation
-
+            transform.Rotate(Vector3.forward*rotationSpeed);
+            
         }
         else if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(-Vector3.forward);
-            m_rigidBody.freezeRotation = true;  //Take manual control of the rotation
-
+            transform.Rotate(-Vector3.forward*rotationSpeed);
+            //m_rigidBody.freezeRotation = true;  //Take manual control of the rotation
         }
 
         m_rigidBody.freezeRotation = false; //Let  physics control the rotation.
+    }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Friendly":
+                Debug.Log("Collided with " + collision.gameObject);
+                Debug.Log("Ok");
+                break;
+            case "Fuel":
+                Debug.Log("Fuel refield");
+                break;
+            default:
+                //Destroy(this.gameObject);
+                Debug.Log("Dead");
+                break;
+        }
     }
 
     private void Audio()
