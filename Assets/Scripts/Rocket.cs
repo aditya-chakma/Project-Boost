@@ -11,9 +11,10 @@ public class Rocket : MonoBehaviour
 
     [SerializeField]
     private float m_rcsThrust = 100f;
-
     [SerializeField]
     private float m_mainThrust =10000f;
+    [SerializeField]
+    private AudioClip m_mainEngineAudio, m_levelLoadAudio, m_hitAudio ;
 
     enum State  {Alive, Dead, Transcending};
 
@@ -88,11 +89,12 @@ public class Rocket : MonoBehaviour
                 break;
             case "Finish":
                 m_state = State.Transcending;
+                m_audioSource.PlayOneShot(m_levelLoadAudio);
                 Invoke("LoadLevel",1f);
                 break;
             default:
                 m_state = State.Dead;
-                
+                m_audioSource.PlayOneShot(m_hitAudio);
                 Invoke("LoadLevel",0.5f);
                 break;
         }
@@ -129,7 +131,7 @@ public class Rocket : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                m_audioSource.Play();
+                m_audioSource.PlayOneShot(m_mainEngineAudio);
             }
             //Stops playing the sound
             if (Input.GetKeyUp(KeyCode.Space))
