@@ -15,7 +15,9 @@ public class Rocket : MonoBehaviour
     [SerializeField]
     private float m_mainThrust =10000f;
 
+    enum State  {Alive, Dead, Transcending};
 
+    private State m_state;
 
     // Start is called before the first frame update
     void Start()
@@ -25,14 +27,19 @@ public class Rocket : MonoBehaviour
         Application.targetFrameRate = 60;
 
         m_rigidBody.freezeRotation =true;
+        m_state = State.Alive;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        ProcessInput();
+        if(m_state == State.Alive)
+        {
+            ProcessInput();
+        }
         Audio();
+        
     }
 
     /**
@@ -76,21 +83,35 @@ public class Rocket : MonoBehaviour
                 Debug.Log("Ok");
                 break;
             case "Finish":
-                if(SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings -1)
-                {
-                    //Loading next level
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1 );
-                }else
-                {
-                    //Loading same scene
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
-                }
+                m_state = State.Transcending;
+                Invoke("LoadLevel",1f);
                 break;
             default:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                Debug.Log("Dead");
+                m_state = State.Dead;
+                Invoke("LoadLevel",0.5f);
                 break;
         }
+    }
+
+    private void LoadLevel()
+    {
+        if( m_state == State.Transcending)
+        {
+            if(SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings -1)
+            {
+                //Loading next level
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1 );
+            }else
+            {
+                //Loading same scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
+            }
+            
+        }else if( m_state == State.Dead)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        
     }
 
     private void Audio()
@@ -99,14 +120,18 @@ public class Rocket : MonoBehaviour
                 Process sounds
                 */
         //Start Playing the audio clip
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(m_state == State.Alive)
         {
-            m_audioSource.Play();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                m_audioSource.Play();
+            }
+            //Stops playing the sound
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                m_audioSource.Stop();
+            }
         }
-        //Stops playing the sound
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            m_audioSource.Stop();
-        }
+        
     }
 }

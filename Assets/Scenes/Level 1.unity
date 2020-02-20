@@ -96,7 +96,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: e163ffad7ca0a2e4aa3b0ab8919be0f7,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -1981,45 +1982,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 506644077206569234, guid: f7fc7240bfc8be14582e3b32015cf0cc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 506644077206569239, guid: f7fc7240bfc8be14582e3b32015cf0cc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.187874
+      value: 16.22509
       objectReference: {fileID: 0}
     - target: {fileID: 506644077206569239, guid: f7fc7240bfc8be14582e3b32015cf0cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.040764
+      value: 25.99958
       objectReference: {fileID: 0}
     - target: {fileID: 506644077206569239, guid: f7fc7240bfc8be14582e3b32015cf0cc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.85765
+      value: -34.318367
       objectReference: {fileID: 0}
     - target: {fileID: 506644077206569239, guid: f7fc7240bfc8be14582e3b32015cf0cc,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.001194221
+      value: 0.1779141
       objectReference: {fileID: 0}
     - target: {fileID: 506644077206569239, guid: f7fc7240bfc8be14582e3b32015cf0cc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.019810654
+      value: 0.12243283
       objectReference: {fileID: 0}
     - target: {fileID: 506644077206569239, guid: f7fc7240bfc8be14582e3b32015cf0cc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00018306026
+      value: -0.022527322
       objectReference: {fileID: 0}
     - target: {fileID: 506644077206569239, guid: f7fc7240bfc8be14582e3b32015cf0cc,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.999803
+      value: 0.97614
       objectReference: {fileID: 0}
     - target: {fileID: 506644077206569239, guid: f7fc7240bfc8be14582e3b32015cf0cc,
         type: 3}
@@ -2040,11 +2036,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 506644077206569232, guid: f7fc7240bfc8be14582e3b32015cf0cc,
-        type: 3}
-      propertyPath: field of view
-      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7fc7240bfc8be14582e3b32015cf0cc, type: 3}
