@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
+
+    // todo lighting
+
     private Rigidbody m_rigidBody;
     private AudioSource m_audioSource;
 
@@ -73,10 +76,18 @@ public class Rocket : MonoBehaviour
                 Debug.Log("Ok");
                 break;
             case "Finish":
-                SceneManager.LoadScene(1);
+                if(SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings -1)
+                {
+                    //Loading next level
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1 );
+                }else
+                {
+                    //Loading same scene
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
+                }
                 break;
             default:
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 Debug.Log("Dead");
                 break;
         }
