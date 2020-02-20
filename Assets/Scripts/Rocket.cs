@@ -76,6 +76,10 @@ public class Rocket : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if(m_state != State.Alive)
+        {
+            return;
+        }
         switch (collision.gameObject.tag)
         {
             case "Friendly":
@@ -88,6 +92,7 @@ public class Rocket : MonoBehaviour
                 break;
             default:
                 m_state = State.Dead;
+                
                 Invoke("LoadLevel",0.5f);
                 break;
         }
