@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
@@ -73,11 +72,11 @@ public class Rocket : MonoBehaviour
                 Debug.Log("Collided with " + collision.gameObject);
                 Debug.Log("Ok");
                 break;
-            case "Fuel":
-                Debug.Log("Fuel refield");
+            case "Finish":
+                SceneManager.LoadScene(1);
                 break;
             default:
-                //Destroy(this.gameObject);
+                SceneManager.LoadScene(0);
                 Debug.Log("Dead");
                 break;
         }
