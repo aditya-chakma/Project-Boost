@@ -6,9 +6,9 @@ public class Oscilator : MonoBehaviour
     // Start is called before the first frame update
     [Range(0,1)]
     [SerializeField]
-    private float movementFactor;
+    private float movementFactor =1;
     [SerializeField]
-    private float m_Period;
+    private float m_Period =2;
     [SerializeField]
     Transform m_TargetPosition;
     private Vector3 m_startingPosition,moveDirection;
