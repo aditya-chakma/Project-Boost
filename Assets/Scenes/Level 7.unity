@@ -2445,7 +2445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementFactor: 1
-  m_Period: 4
+  m_Period: 6
   m_TargetPosition: {fileID: 1864009862}
 --- !u!4 &1580117566
 Transform:
@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementFactor: 1
-  m_Period: 5
+  m_Period: 7
   m_TargetPosition: {fileID: 1240711802}
 --- !u!4 &1996091292
 Transform:
@@ -2907,7 +2907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementFactor: 1
-  m_Period: 4
+  m_Period: 6
   m_TargetPosition: {fileID: 273445071}
 --- !u!4 &2025059582
 Transform:
