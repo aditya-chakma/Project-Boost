@@ -28,11 +28,10 @@ public class Oscilator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if( m_Period <= Mathf.Epsilon) return;
         this.transform.position = m_startingPosition + moveDirection*movementFactor*Mathf.Sin(m_signFact);
-        if(m_Period!=0)
-        {
-            m_signFact+=2*Mathf.PI*Time.deltaTime/m_Period;
-        }
+        m_signFact+=2*Mathf.PI*Time.deltaTime/m_Period;
+        
         
     }
 
