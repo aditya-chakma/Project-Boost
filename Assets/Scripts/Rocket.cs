@@ -19,6 +19,7 @@ public class Rocket : MonoBehaviour
 
     enum State  {Alive, Dead, Transcending};
     private State m_state;
+    private bool m_Collision;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class Rocket : MonoBehaviour
         Application.targetFrameRate = 60;
 
         m_state = State.Alive;
+        m_Collision = true;
 
     }
 
@@ -48,10 +50,27 @@ public class Rocket : MonoBehaviour
     */
     private void ProcessInput()
     {
+        if(Debug.isDebugBuild)
+        {
+            ProcessDebugInput();
+        }
         //Handle the movement
         ProcessThrustInput();
         ProcessRotationInput();
         m_rigidBody.freezeRotation = false; //Let  physics control the rotation.
+    }
+
+    private void ProcessDebugInput()
+    {
+        if(Input.GetKey(KeyCode.L))
+        {
+            m_state = State.Transcending;
+            LoadLevel();
+        }
+        if(Input.GetKey(KeyCode.C))
+        {
+            m_Collision = !m_Collision;
+        }
     }
 
     private void ProcessThrustInput()
@@ -81,6 +100,7 @@ public class Rocket : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if(!m_Collision) return;
         if(m_state != State.Alive)
         {
             return;
@@ -149,5 +169,11 @@ public class Rocket : MonoBehaviour
             }
         }
         
+    }
+
+    private bool Toogle(bool p)
+    {
+        if(p) return false;
+        return true;
     }
 }
